@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+build
+*.log
+.DS_Store
+.env
+.env.example
+.env*.local
+# Python backend
+backend/.venv/
+backend/.env
+__pycache__/
+*.pyc
+*.pyo
