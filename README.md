@@ -4,6 +4,45 @@ Aplikasi web chatbot AI untuk mencari dan memahami informasi perkara pada Kejaks
 Versi ini adalah **duplikat** dari projek `projek akhir`, dengan lapisan **Langflow diganti
 backend Python LangChain (FastAPI)**. UI Next.js, fitur, dan database **Astra DB tetap sama**.
 
+## Cara Cepat: Jalan TANPA API Key (Mode Demo)
+
+Data contoh **sudah termasuk di repo** (`data/kecil01.txt` + data demo di `src/lib/mockData.ts`),
+jadi siapa pun bisa coba aplikasi **tanpa API key siapa pun** — termasuk tanpa key pemilik repo.
+
+```bash
+npm install
+```
+
+Buat file `.env` di folder proyek berisi:
+
+```env
+MOCK_MODE=true
+```
+
+```bash
+npm run dev
+```
+
+Buka **http://localhost:3000** — chatbot langsung jalan dengan data contoh
+(5 perkara demo + efek mengetik + kartu perkara + form pencarian). Tanpa Python, tanpa Astra, tanpa Gemini. 🎉
+
+> Mode demo cocok untuk: cek tampilan, demo ke dosen/teman, atau develop UI.
+> Jawabannya dari data contoh lokal, bukan AI/RAG beneran.
+
+## Cara Full RAG: Pakai API Key Sendiri (Gratis, Bukan Key Pemilik Repo)
+
+Repo ini **tidak menyimpan API key siapa pun** (semua `.env` di-ignore).
+Kalau mau jawaban AI beneran dari data `data/kecil01.txt` (50 perkara), masing-masing
+pakai key gratis milik sendiri — tidak perlu minta key ke pemilik repo:
+
+1. **Gemini (gratis):** buat key di [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
+2. **Astra DB (gratis):** buat database serverless di [astra.datastax.com](https://astra.datastax.com),
+   catat **API Endpoint** dan buat **Application Token** (`AstraCS:...`)
+3. Isi keduanya ke `backend/.env`, lalu ikuti **Langkah Setup** di bawah
+   (install backend → `python ingest.py` → jalankan web dengan `MOCK_MODE=false`)
+
+Setiap orang yang clone repo ini mengulang 3 langkah itu dengan akun gratisnya masing-masing.
+
 ## Arsitektur
 
 ```
